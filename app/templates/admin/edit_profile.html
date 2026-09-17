@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Edit profile{% endblock %}
+{% block content %}
+  <h1>Edit profile</h1>
+  <form method="post" class="form">
+    <label for="name">Name</label>
+    <input type="text" id="name" name="name" value="{{ profile['name'] }}" required>
+
+    <label for="tagline">Tagline</label>
+    <input type="text" id="tagline" name="tagline" value="{{ profile['tagline'] }}">
+
+    <label for="bio">Bio</label>
+    <textarea id="bio" name="bio" rows="5">{{ profile['bio'] }}</textarea>
+
+    <label for="contact_email">Contact email</label>
+    <input type="email" id="contact_email" name="contact_email" value="{{ profile['contact_email'] }}">
+
+    <button type="submit">Save</button>
+  </form>
+{% endblock %}

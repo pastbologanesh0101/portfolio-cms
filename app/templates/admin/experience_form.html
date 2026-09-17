@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}{{ "Edit experience" if experience else "New experience" }}{% endblock %}
+{% block content %}
+  <h1>{{ "Edit experience" if experience else "New experience" }}</h1>
+  <form method="post" class="form">
+    <label for="title">Title</label>
+    <input type="text" id="title" name="title" value="{{ experience['title'] if experience else '' }}" required>
+
+    <label for="organization">Organization</label>
+    <input type="text" id="organization" name="organization"
+           value="{{ experience['organization'] if experience else '' }}" required>
+
+    <label for="start_date">Start date</label>
+    <input type="text" id="start_date" name="start_date" placeholder="YYYY-MM"
+           value="{{ experience['start_date'] if experience else '' }}" required>
+
+    <label for="end_date">End date (leave blank for "present")</label>
+    <input type="text" id="end_date" name="end_date" placeholder="YYYY-MM"
+           value="{{ experience['end_date'] if experience and experience['end_date'] else '' }}">
+
+    <label for="description">Description</label>
+    <textarea id="description" name="description" rows="4">{{ experience['description'] if experience else '' }}</textarea>
+
+    <button type="submit">Save</button>
+  </form>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}Skills{% endblock %}
+{% block content %}
+  <h1>Skills</h1>
+  {% if grouped_skills %}
+    {% for category, skills in grouped_skills.items() %}
+      <section class="skill-category">
+        <h2>{{ category }}</h2>
+        <ul class="skill-list">
+          {% for skill in skills %}
+            <li>
+              <span class="skill-name">{{ skill["name"] }}</span>
+              {% if skill["proficiency_level"] %}
+                <span class="skill-level">{{ skill["proficiency_level"] }}</span>
+              {% endif %}
+            </li>
+          {% endfor %}
+        </ul>
+      </section>
+    {% endfor %}
+  {% else %}
+    <p class="empty">No skills listed yet.</p>
+  {% endif %}
+{% endblock %}

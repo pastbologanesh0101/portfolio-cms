@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}{{ "Edit project" if project else "New project" }}{% endblock %}
+{% block content %}
+  <h1>{{ "Edit project" if project else "New project" }}</h1>
+  <form method="post" class="form">
+    <label for="title">Title</label>
+    <input type="text" id="title" name="title" value="{{ project['title'] if project else '' }}" required>
+
+    <label for="description">Description</label>
+    <textarea id="description" name="description" rows="4">{{ project['description'] if project else '' }}</textarea>
+
+    <label for="tech_stack">Tech stack</label>
+    <input type="text" id="tech_stack" name="tech_stack" value="{{ project['tech_stack'] if project else '' }}"
+           placeholder="Flask, SQLite, JavaScript">
+
+    <label for="url">URL</label>
+    <input type="url" id="url" name="url" value="{{ project['url'] if project else '' }}">
+
+    <label for="image_alt_text">Image alt text</label>
+    <input type="text" id="image_alt_text" name="image_alt_text"
+           value="{{ project['image_alt_text'] if project else '' }}">
+
+    <label class="checkbox-label">
+      <input type="checkbox" name="featured" {% if project and project['featured'] %}checked{% endif %}>
+      Featured
+    </label>
+
+    <button type="submit">Save</button>
+  </form>
+{% endblock %}

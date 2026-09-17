@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}{{ profile["name"] }}{% endblock %}
+{% block content %}
+  <section class="hero">
+    <h1>{{ profile["name"] }}</h1>
+    <p class="tagline">{{ profile["tagline"] }}</p>
+    <p class="bio">{{ profile["bio"] }}</p>
+    {% if profile["contact_email"] %}
+      <p><a href="mailto:{{ profile['contact_email'] }}">{{ profile["contact_email"] }}</a></p>
+    {% endif %}
+  </section>
+
+  <section>
+    <h2>Featured projects</h2>
+    {% if projects %}
+      <div class="project-grid">
+        {% for project in projects %}
+          <article class="project-card">
+            <h3>{{ project["title"] }}</h3>
+            <p>{{ project["description"] }}</p>
+            <p class="tech-stack">{{ project["tech_stack"] }}</p>
+            {% if project["url"] %}
+              <a href="{{ project['url'] }}">View project</a>
+            {% endif %}
+          </article>
+        {% endfor %}
+      </div>
+    {% else %}
+      <p class="empty">No featured projects yet.</p>
+    {% endif %}
+    <p><a href="{{ url_for('public.projects') }}">See all projects &rarr;</a></p>
+  </section>
+{% endblock %}

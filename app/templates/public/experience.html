@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Experience{% endblock %}
+{% block content %}
+  <h1>Experience</h1>
+  {% if entries %}
+    <ol class="timeline">
+      {% for entry in entries %}
+        <li class="timeline-entry">
+          <h3>{{ entry["title"] }} &mdash; {{ entry["organization"] }}</h3>
+          <p class="dates">
+            {{ entry["start_date"] }} &ndash;
+            {% if entry["end_date"] %}{{ entry["end_date"] }}{% else %}present{% endif %}
+          </p>
+          <p>{{ entry["description"] }}</p>
+        </li>
+      {% endfor %}
+    </ol>
+  {% else %}
+    <p class="empty">No experience entries yet.</p>
+  {% endif %}
+{% endblock %}

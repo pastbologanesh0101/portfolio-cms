@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}{{ "Edit skill" if skill else "New skill" }}{% endblock %}
+{% block content %}
+  <h1>{{ "Edit skill" if skill else "New skill" }}</h1>
+  <form method="post" class="form">
+    <label for="name">Name</label>
+    <input type="text" id="name" name="name" value="{{ skill['name'] if skill else '' }}" required>
+
+    <label for="category">Category</label>
+    <input type="text" id="category" name="category" value="{{ skill['category'] if skill else '' }}"
+           placeholder="Languages, Frameworks, Tools..." required>
+
+    <label for="proficiency_level">Proficiency level</label>
+    <input type="text" id="proficiency_level" name="proficiency_level"
+           value="{{ skill['proficiency_level'] if skill else '' }}" placeholder="Beginner / Intermediate / Advanced">
+
+    <button type="submit">Save</button>
+  </form>
+{% endblock %}
